@@ -1,19 +1,2 @@
-@import "./Colors";
-
-@mixin navBarElementBorder() {
-  border-style: solid;
-  border-color: $theme-color2;
-  border-width: thin;
-}
-
-.navBarElement {
-  @include navBarElementBorder;
-  border-radius: 5%;
-  color: white;
-  font-size: 20px;
-  padding: 5%;
-}
-
-.navBarSearchBar {
-  @include navBarElementBorder;
-}
+@import "./Navbar.scss";
+@import "./Products.scss";

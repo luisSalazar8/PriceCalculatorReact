@@ -19,15 +19,14 @@ const NavBar = () => {
               Products
             </div>
           </Nav>
-
-          <Nav>
+          {/* <Nav>
             <FormControl
               type="text"
               placeholder="Search"
               className="navBarSearchBar"
               aria-label="Search"
             />
-          </Nav>
+          </Nav> */}
           <Nav>
             <div href="/" className="navBarElement">
               Shopping Cart

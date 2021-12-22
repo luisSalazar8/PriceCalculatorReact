@@ -1,0 +1,14 @@
+.productImageCard {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+}
+
+.productCard:hover {
+  cursor: pointer;
+}
+
+.productCard {
+  margin-top: 5%;
+  box-shadow: -5px 5px 10px grey;
+}
