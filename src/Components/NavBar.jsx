@@ -1,27 +1,37 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
-
+import {
+  Col,
+  Container,
+  Form,
+  FormControl,
+  Nav,
+  Navbar,
+  Row,
+} from "react-bootstrap";
 
 const NavBar = () => {
   return (
-    <Navbar bg="base-green" expand="lg">
-      <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+    <Navbar bg="base-green" expand="sm">
+      <Container fluid>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-between">
+          <Nav>
+            <div href="/" className="navBarElement">
+              Products
+            </div>
+          </Nav>
+
+          <Nav>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="navBarSearchBar"
+              aria-label="Search"
+            />
+          </Nav>
+          <Nav>
+            <div href="/" className="navBarElement">
+              Shopping Cart
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

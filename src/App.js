@@ -8,6 +8,7 @@ function App() {
     <React.Fragment>
       <MarketLogo />
       <NavBar />
+      <p className="navBarElement">prueba</p>
     </React.Fragment>
   );
 }
