@@ -1,9 +1,20 @@
 import { Card } from "react-bootstrap";
-
+import { selectProduct, showModalProductDetail } from "../../Actions";
+import { connect } from "react-redux";
+import { closeModalProductDetail } from "../../Actions";
 const ProductCard = (props) => {
+  const clickProduct = () => {
+    props.selectProduct(props.product);
+    props.showModalProductDetail();
+  };
+
   return (
-    <Card className="productCard">
-      <Card.Img variant="top" src={props.product.imageRoute} className="productImageCard"/>
+    <Card className="productCard" onClick={clickProduct}>
+      <Card.Img
+        variant="top"
+        src={props.product.imageRoute}
+        className="productImageCard"
+      />
       <Card.Body>
         <Card.Title>{props.product.name}</Card.Title>
         <Card.Text>
@@ -20,4 +31,6 @@ const ProductCard = (props) => {
   );
 };
 
-export default ProductCard;
+export default connect(null, { selectProduct, showModalProductDetail })(
+  ProductCard
+);

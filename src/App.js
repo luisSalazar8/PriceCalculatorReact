@@ -6,7 +6,7 @@ import ProductList from "./Pages/ProductList";
 
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import reducers from "./Reducers/Index";
+import reducers from "./Reducers";
 
 function App() {
   return (

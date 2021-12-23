@@ -26,14 +26,30 @@ const productReducer = () => {
 };
 
 const selectedProductReducer = (selectedProduct = null, action) => {
-  if (action.type === "PRODUCT_SELECTED") {
-    return action.payload;
+  switch (action.type) {
+    case "PRODUCT_SELECTED":
+      return action.payload;
+    default:
+      return selectedProduct;
   }
+};
 
-  return selectedProduct;
+const showModalProductDetailReducer = (
+  showModalProductDetail = false,
+  action
+) => {
+  switch (action.type) {
+    case "SHOW_MODAL_PRODUCT_DETAIL":
+      return true;
+    case "CLOSE_MODAL_PRODUCT_DETAIL":
+      return false;
+    default:
+      return showModalProductDetail;
+  }
 };
 
 export default combineReducers({
   products: productReducer,
   selectedProduct: selectedProductReducer,
+  showModalProductDetail: showModalProductDetailReducer,
 });

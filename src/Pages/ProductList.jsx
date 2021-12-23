@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductCard from "../Components/Product/ProductCard";
 import { connect } from "react-redux";
+import ProductDetailModal from "../Components/Product/ProductDetailModal";
 
 const ProductList = (props) => {
   const listProducts = () => {
@@ -24,6 +25,7 @@ const ProductList = (props) => {
       <Container>
         <Row>{listProducts()}</Row>
       </Container>
+      <ProductDetailModal />
     </React.Fragment>
   );
 };
