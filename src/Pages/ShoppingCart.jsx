@@ -18,6 +18,18 @@ const ShoppingCart = (props) => {
   };
 
   const productsRow = () => {
+    if (props.shoppingCart.items.length === 0) {
+      return (
+        <React.Fragment>
+          <br />
+          <br />
+          <h4 className="text-center">Your shopping cart is empty!</h4>
+          <br />
+          <br />
+        </React.Fragment>
+      );
+    }
+
     const list = props.shoppingCart.items.map((item) => {
       return <ProductRow product={item} key={item.name} />;
     });
@@ -50,6 +62,22 @@ const ShoppingCart = (props) => {
     setShowModal(true);
   };
 
+  const generateCheckoutButton = () => {
+    if (props.shoppingCart.items.length > 0) {
+      return (
+        <Row>
+          <Col lg={{ span: 3, offset: 8 }}>
+            <div className="d-grid gap-2">
+              <Button variant="base-green" size="lg" onClick={buyItems}>
+                Checkout{" "}
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      );
+    }
+  };
+
   useEffect(() => {
     calculateTotal();
   }, []);
@@ -73,7 +101,7 @@ const ShoppingCart = (props) => {
           </Col>
         </Row>
         <br />
-        {props.shoppingCart.items.length > 0 && productsRow()}
+        {productsRow()}
         <Row>
           <Col lg={{ span: 3, offset: 7 }}>
             <h3>Total Price: </h3>
@@ -91,15 +119,7 @@ const ShoppingCart = (props) => {
           </Col>
         </Row>
         <br />
-        <Row>
-          <Col lg={{ span: 3, offset: 8 }}>
-            <div className="d-grid gap-2">
-              <Button variant="base-green" size="lg" onClick={buyItems}>
-                Checkout{" "}
-              </Button>
-            </div>
-          </Col>
-        </Row>
+        {generateCheckoutButton()}
         <br />
         <br />
         <br />
