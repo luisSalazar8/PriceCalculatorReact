@@ -3,15 +3,15 @@
 @mixin navBarElementBorder() {
   border-style: solid;
   border-color: $theme-color2;
-  border-width: thin;
+  border-width: medium;
 }
 
 .navBarElement {
   @include navBarElementBorder;
   border-radius: 5%;
   color: white;
-  font-size: 20px;
-  padding: 5%;
+
+  // padding-right: 20%;
 }
 
 .navBarSearchBar {
@@ -20,4 +20,8 @@
 
 .navElementLink {
   text-decoration: none;
+}
+
+.navBarBorder {
+  @include navBarElementBorder;
 }

@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap";
 import { selectProduct, showModalProductDetail } from "../../Actions";
 import { connect } from "react-redux";
-import { closeModalProductDetail } from "../../Actions";
 const ProductCard = (props) => {
   const clickProduct = () => {
     props.selectProduct(props.product);

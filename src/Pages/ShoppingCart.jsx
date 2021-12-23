@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, ListGroup, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import ProductRow from "../Components/ShoppingCart/ProductRow";
 import { useNavigate } from "react-router-dom";
