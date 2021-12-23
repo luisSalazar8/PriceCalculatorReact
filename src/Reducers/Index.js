@@ -51,17 +51,17 @@ const showModalProductDetailReducer = (
 };
 
 const shoppingCartReducer = (
-  shoppingCart = { item: [], quantity: 0 },
+  shoppingCart = { items: [], quantity: 0 },
   action
 ) => {
   switch (action.type) {
     case "ADD_PRODUCT":
       const { product, quantity, total } = action.payload;
-      const result = shoppingCart["item"].filter(
+      const result = shoppingCart["items"].filter(
         (item) => item.name === product.name
       );
       if (result.length === 0) {
-        shoppingCart["item"].push({
+        shoppingCart["items"].push({
           ...product,
           total: total,
           quantity: quantity,
@@ -73,12 +73,13 @@ const shoppingCartReducer = (
       }
 
       return {
-        item: shoppingCart["item"],
+        items: shoppingCart["items"],
         quantity: shoppingCart["quantity"] + quantity,
       };
 
-    case "REMOVE_PRODUCT":
-      return shoppingCart;
+    case "CLEAN_SHOPPING_CART":
+      return { items: [], quantity: 0 };
+
     default:
       return shoppingCart;
   }

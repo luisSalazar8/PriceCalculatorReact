@@ -23,6 +23,7 @@ const ProductList = (props) => {
     <React.Fragment>
       <br />
       <Container>
+        <h2>Products</h2>
         <Row>{listProducts()}</Row>
       </Container>
       <ProductDetailModal />

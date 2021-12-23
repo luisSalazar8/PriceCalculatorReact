@@ -24,3 +24,9 @@ export const addProductToCart = (product, quantity, total) => {
     payload: { product, quantity: quantityInt, total },
   };
 };
+
+export const cleanShoppingCart = () => {
+  return {
+    type: "CLEAN_SHOPPING_CART",
+  };
+};

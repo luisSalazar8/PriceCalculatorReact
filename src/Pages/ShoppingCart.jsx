@@ -1,14 +1,139 @@
-
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, ListGroup, Modal, Row } from "react-bootstrap";
 import { connect } from "react-redux";
+import ProductRow from "../Components/ShoppingCart/ProductRow";
+import { useNavigate } from "react-router-dom";
+import { cleanShoppingCart } from "../Actions/index";
 
-const ShoppingCart = (props)=>{
-    console.log(props.shoppingCart);
-    return (<p>cart</p>);
-}
+const ShoppingCart = (props) => {
+  let navigate = useNavigate();
+  const [total, setTotal] = useState(0);
+  const [saved, setSaved] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
-const mapStateToProps = (state) => {
-    console.log(state);
-    return { shoppingCart: state.shoppingCart };
+  const closeModal = () => {
+    setShowModal(false);
+    props.cleanShoppingCart();
+    navigate("/");
   };
 
-export default connect(mapStateToProps,{})(ShoppingCart);
+  const productsRow = () => {
+    const list = props.shoppingCart.items.map((item) => {
+      return <ProductRow product={item} key={item.name} />;
+    });
+
+    return list;
+  };
+
+  const calculateTotal = () => {
+    let accumulator = 0;
+    props.shoppingCart.items.forEach((item) => {
+      accumulator = accumulator + item.total;
+    });
+
+    setTotal(parseFloat(accumulator.toFixed(2)));
+  };
+
+  const calculateSaved = () => {
+    let accumulator = 0;
+
+    props.shoppingCart.items.forEach((item) => {
+      accumulator = accumulator + item.price * item.quantity;
+    });
+
+    let result = parseFloat((accumulator - total).toFixed(2));
+
+    setSaved(result);
+  };
+
+  const buyItems = () => {
+    setShowModal(true);
+  };
+
+  useEffect(() => {
+    calculateTotal();
+  }, []);
+
+  useEffect(() => {
+    calculateSaved();
+  }, [total]);
+
+  return (
+    <React.Fragment>
+      <br />
+      <Container>
+        <h2>Shooping Cart</h2>
+        <br />
+        <Row>
+          <Col lg={10}>
+            <h3>Product</h3>
+          </Col>
+          <Col lg={2}>
+            <h3>Price</h3>
+          </Col>
+        </Row>
+        <br />
+        {props.shoppingCart.items.length > 0 && productsRow()}
+        <Row>
+          <Col lg={{ span: 3, offset: 7 }}>
+            <h3>Total Price: </h3>
+          </Col>
+          <Col lg={{ span: 2 }}>
+            <h3> US ${total}</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={{ span: 3, offset: 7 }}>
+            <h3>You have saved: </h3>
+          </Col>
+          <Col lg={{ span: 2 }}>
+            <h3> US ${saved}</h3>
+          </Col>
+        </Row>
+        <br />
+        <Row>
+          <Col lg={{ span: 3, offset: 8 }}>
+            <div className="d-grid gap-2">
+              <Button variant="base-green" size="lg" onClick={buyItems}>
+                Checkout{" "}
+              </Button>
+            </div>
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <br />
+      </Container>
+      <Modal show={showModal} onHide={closeModal} animation={true} centered>
+        <Modal.Header closeButton>
+          <Modal.Title className="text-center">Succesful Purchase</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Container className="text-center">
+            <Row>
+              <Col>
+                <h5>Thank you for buying our products!</h5>
+              </Col>
+            </Row>
+            <br />
+            <Row>
+              <Col lg={{ span: 4, offset: 4 }}>
+                <div className="d-grid gap-2">
+                  <Button variant="base-green" size="lg" onClick={closeModal}>
+                    accept
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </Modal.Body>
+      </Modal>
+    </React.Fragment>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return { shoppingCart: state.shoppingCart };
+};
+
+export default connect(mapStateToProps, { cleanShoppingCart })(ShoppingCart);
