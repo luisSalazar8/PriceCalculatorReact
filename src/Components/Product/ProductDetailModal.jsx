@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { closeModalProductDetail } from "../../Actions";
 import { connect } from "react-redux";
+import { priceCalculator } from "../../Util/Price";
 
 const ProductDetailModal = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -40,7 +41,7 @@ const ProductDetailModal = (props) => {
 
   const quantityOptions = () => {
     const optionList = [];
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 10; i++) {
       optionList.push(
         <option value={i} key={i}>
           {i}
@@ -55,17 +56,7 @@ const ProductDetailModal = (props) => {
   };
 
   const calculateTotal = () => {
-    let total = 0;
-    if (props.selectedProduct.hasSale) {
-      const saleQuantity = props.selectedProduct.sale.quantity;
-      const salePrice = props.selectedProduct.sale.price;
-      const residue = quantity % saleQuantity;
-      total = residue * props.selectedProduct.price + ((quantity-residue)/saleQuantity)*salePrice;
-    } else {
-      total = props.selectedProduct.price * quantity;
-      
-    }
-    setPrice(total);
+    setPrice(priceCalculator(props.selectedProduct, quantity));
   };
 
   const resetValues = () => {
