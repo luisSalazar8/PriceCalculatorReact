@@ -66,7 +66,11 @@ const ShoppingCart = (props) => {
     if (props.shoppingCart.items.length > 0) {
       return (
         <Row>
-          <Col lg={{ span: 3, offset: 8 }}>
+          <Col
+            lg={{ span: 3, offset: 8 }}
+            md={{ span: 4, offset: 7 }}
+            sm={{ span: 4, offset: 7 }}
+          >
             <div className="d-grid gap-2">
               <Button variant="base-green" size="lg" onClick={buyItems}>
                 Checkout{" "}
@@ -91,7 +95,7 @@ const ShoppingCart = (props) => {
       <br />
       <Container>
         <Row className="borderDownBlack">
-        <h2>Shooping Cart</h2>
+          <h2>Shooping Cart</h2>
         </Row>
         <br />
         <Row className="borderDownGrey">
@@ -105,18 +109,40 @@ const ShoppingCart = (props) => {
         <br />
         {productsRow()}
         <Row>
-          <Col lg={{ span: 3, offset: 7 }} md={{ span: 4, offset: 5 }}>
+          <Col
+            lg={{ span: 3, offset: 7 }}
+            md={{ span: 4, offset: 5 }}
+            sm={{ span: 5, offset: 4 }}
+            xs={{ span: 9 }}
+          >
             <h3>Total Price: </h3>
           </Col>
-          <Col lg={{ span: 2 }} md={{ span: 3 }} className="d-flex justify-content-end">
+          <Col
+            lg={{ span: 2 }}
+            md={{ span: 3 }}
+            sm={{ span: 3 }}
+            xs={{ span: 3 }}
+            className="d-flex justify-content-end"
+          >
             <h3> US ${total}</h3>
           </Col>
         </Row>
         <Row>
-          <Col lg={{ span: 3, offset: 7 }} md={{ span: 4, offset: 5  }}>
+          <Col
+            lg={{ span: 3, offset: 7 }}
+            md={{ span: 4, offset: 5 }}
+            sm={{ span: 5, offset: 4 }}
+            xs={{ span: 9 }}
+          >
             <h3>You have saved: </h3>
           </Col>
-          <Col lg={{ span: 2 }} md={{ span: 3 }} className="d-flex justify-content-end">
+          <Col
+            lg={{ span: 2 }}
+            md={{ span: 3 }}
+            sm={{ span: 3 }}
+            xs={{ span: 3 }}
+            className="d-flex justify-content-end"
+          >
             <h3 className="text-right"> US ${saved}</h3>
           </Col>
         </Row>
