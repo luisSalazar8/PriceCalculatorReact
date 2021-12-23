@@ -1,0 +1,16 @@
+@mixin onlyBottomBorder() {
+  border-style: solid;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.borderDownBlack {
+  @include onlyBottomBorder;
+  border-color: black;
+}
+
+.borderDownGrey {
+  @include onlyBottomBorder;
+  border-color: grey;
+}

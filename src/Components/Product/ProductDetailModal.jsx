@@ -140,7 +140,7 @@ const ProductDetailModal = (props) => {
           <br />
           <Row>
             <Col>
-              <Button variant="base-green" onClick={sendProduct}>
+              <Button variant="base-green" onClick={sendProduct} size="lg">
                 Add to cart{" "}
               </Button>
             </Col>

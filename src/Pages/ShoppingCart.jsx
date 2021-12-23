@@ -90,32 +90,34 @@ const ShoppingCart = (props) => {
     <React.Fragment>
       <br />
       <Container>
+        <Row className="borderDownBlack">
         <h2>Shooping Cart</h2>
+        </Row>
         <br />
-        <Row>
-          <Col lg={10}>
+        <Row className="borderDownGrey">
+          <Col lg={10} md={10} xs={10}>
             <h3>Product</h3>
           </Col>
-          <Col lg={2}>
+          <Col lg={2} md={2} xs={2} className="d-flex justify-content-end">
             <h3>Price</h3>
           </Col>
         </Row>
         <br />
         {productsRow()}
         <Row>
-          <Col lg={{ span: 3, offset: 7 }}>
+          <Col lg={{ span: 3, offset: 7 }} md={{ span: 4, offset: 5 }}>
             <h3>Total Price: </h3>
           </Col>
-          <Col lg={{ span: 2 }}>
+          <Col lg={{ span: 2 }} md={{ span: 3 }} className="d-flex justify-content-end">
             <h3> US ${total}</h3>
           </Col>
         </Row>
         <Row>
-          <Col lg={{ span: 3, offset: 7 }}>
+          <Col lg={{ span: 3, offset: 7 }} md={{ span: 4, offset: 5  }}>
             <h3>You have saved: </h3>
           </Col>
-          <Col lg={{ span: 2 }}>
-            <h3> US ${saved}</h3>
+          <Col lg={{ span: 2 }} md={{ span: 3 }} className="d-flex justify-content-end">
+            <h3 className="text-right"> US ${saved}</h3>
           </Col>
         </Row>
         <br />
