@@ -1,10 +1,9 @@
-
-$theme-color1: #095B4B;
-$theme-color2: #E0E6D3;
+$theme-color1: #095b4b;
+$theme-color2: #e0e6d3;
 
 $theme-colors: (
-    "base-green": $theme-color1,
-    "base-yellow": $theme-color2
+  "base-green": $theme-color1,
+  "base-yellow": $theme-color2,
 );
 
 @import "~bootstrap/scss/bootstrap";
