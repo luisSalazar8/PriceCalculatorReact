@@ -95,7 +95,7 @@ const ShoppingCart = (props) => {
       <br />
       <Container>
         <Row className="borderDownBlack">
-          <h2>Shooping Cart</h2>
+          <h2>Shopping Cart</h2>
         </Row>
         <br />
         <Row className="borderDownGrey">
