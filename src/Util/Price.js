@@ -1,4 +1,6 @@
 export const priceCalculator = (selectedProduct, quantity) => {
+ 
+
   let total = 0;
   if (selectedProduct.hasSale) {
     const saleQuantity = selectedProduct.sale.quantity;
@@ -10,5 +12,6 @@ export const priceCalculator = (selectedProduct, quantity) => {
   } else {
     total = selectedProduct.price * quantity;
   }
-  return total.toFixed(2);
+ 
+  return parseFloat(total.toFixed(2));
 };

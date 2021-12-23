@@ -17,10 +17,10 @@ export const closeModalProductDetail = () => {
   };
 };
 
-export const addProductToCart = (product, quantity, price) => {
+export const addProductToCart = (product, quantity, total) => {
   const quantityInt = parseInt(quantity);
   return {
     type: "ADD_PRODUCT",
-    payload: { product, quantity: quantityInt, price },
+    payload: { product, quantity: quantityInt, total },
   };
 };

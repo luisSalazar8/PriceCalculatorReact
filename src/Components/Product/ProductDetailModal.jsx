@@ -72,11 +72,15 @@ const ProductDetailModal = (props) => {
     if (props.selectedProduct) {
       calculateTotal();
     }
-  }, [quantity, props.showModalProductDetail]);
+  }, [quantity]);
 
   useEffect(() => {
     if (props.showModalProductDetail) {
-      resetValues();
+      if (quantity !== 1) {
+        resetValues();
+      } else {
+        calculateTotal();
+      }
     }
   }, [props.showModalProductDetail]);
 
