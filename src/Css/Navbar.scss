@@ -17,3 +17,7 @@
 .navBarSearchBar {
   @include navBarElementBorder;
 }
+
+.navElementLink {
+  text-decoration: none;
+}

@@ -7,14 +7,19 @@ import ProductList from "./Pages/ProductList";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./Reducers";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <React.Fragment>
       <MarketLogo />
       <Provider store={createStore(reducers)}>
-        <NavBar />
-        <ProductList />
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" exact element={<ProductList />} />
+          </Routes>
+        </BrowserRouter>
       </Provider>
     </React.Fragment>
   );

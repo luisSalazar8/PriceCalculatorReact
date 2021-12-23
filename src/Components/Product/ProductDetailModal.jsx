@@ -65,6 +65,7 @@ const ProductDetailModal = (props) => {
 
   const sendProduct = () => {
     props.addProductToCart(props.selectedProduct, quantity, price);
+    closeModal();
   };
 
   useEffect(() => {

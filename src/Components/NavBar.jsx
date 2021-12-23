@@ -7,6 +7,8 @@ import {
   Navbar,
   Row,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ShoppingCartIcon from "./ShoppingCart/ShoppingCartIcon";
 
 const NavBar = () => {
   return (
@@ -14,11 +16,13 @@ const NavBar = () => {
       <Container fluid>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-between">
-          <Nav>
-            <div href="/" className="navBarElement">
-              Products
-            </div>
-          </Nav>
+          <Link to={`/`} className="navElementLink">
+            <Nav>
+              <div href="/" className="navBarElement">
+                Products
+              </div>
+            </Nav>
+          </Link>
           {/* <Nav>
             <FormControl
               type="text"
@@ -27,11 +31,7 @@ const NavBar = () => {
               aria-label="Search"
             />
           </Nav> */}
-          <Nav>
-            <div href="/" className="navBarElement">
-              Shopping Cart
-            </div>
-          </Nav>
+          <ShoppingCartIcon />
         </Navbar.Collapse>
       </Container>
     </Navbar>
