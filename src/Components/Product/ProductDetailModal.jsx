@@ -27,7 +27,7 @@ const ProductDetailModal = (props) => {
         <Row>
           <Col>
             <FormLabel>
-              Price ({props.selectedProduct.sale.quantity} Units):
+            <b>Price ({props.selectedProduct.sale.quantity} Units):</b>
             </FormLabel>
           </Col>
           <Col>
@@ -106,7 +106,10 @@ const ProductDetailModal = (props) => {
           <br />
           <Row>
             <Col>
-              <FormLabel>Price (Unit):</FormLabel>
+              <FormLabel>
+                {" "}
+                <b>Price (Unit):</b>
+              </FormLabel>
             </Col>
             <Col>
               <FormLabel>US ${props.selectedProduct.price}</FormLabel>
@@ -117,7 +120,7 @@ const ProductDetailModal = (props) => {
 
           <Row className="d-flex align-items-center">
             <Col>
-              <FormLabel>Quantity:</FormLabel>
+              <FormLabel><b>Quantity:</b></FormLabel>
             </Col>
             <Col>
               <Form.Select value={quantity} onChange={onChangeQuantity}>
@@ -128,7 +131,7 @@ const ProductDetailModal = (props) => {
           <br />
           <Row className="d-flex align-items-center">
             <Col>
-              <FormLabel>Total:</FormLabel>
+              <FormLabel><b>Total:</b></FormLabel>
             </Col>
             <Col>
               <FormLabel>US ${price}</FormLabel>

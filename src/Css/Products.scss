@@ -18,3 +18,33 @@
   margin-top: 5%;
   box-shadow: -5px 5px 10px grey;
 }
+
+.saleContainer {
+  position: relative;
+  height: 250px;
+}
+
+.saleContainer img {
+  position: absolute;
+}
+
+.saleContainerText {
+  position: absolute;
+  left: 0;
+}
+
+.sale {
+  color: #FF160C;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
