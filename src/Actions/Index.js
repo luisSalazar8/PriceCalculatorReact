@@ -16,3 +16,11 @@ export const closeModalProductDetail = () => {
     type: "CLOSE_MODAL_PRODUCT_DETAIL",
   };
 };
+
+export const addProductToCart = (product, quantity, price) => {
+  const quantityInt = parseInt(quantity);
+  return {
+    type: "ADD_PRODUCT",
+    payload: { product, quantity: quantityInt, price },
+  };
+};

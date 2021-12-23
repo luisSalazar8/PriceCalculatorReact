@@ -48,8 +48,36 @@ const showModalProductDetailReducer = (
   }
 };
 
+const shoppingCartReducer = (
+  shoppingCart = { item: [], quantity: 0, total: 0 },
+  action
+) => {
+  switch (action.type) {
+    case "ADD_PRODUCT":
+      const { product, quantity, price } = action.payload;
+      const result = shoppingCart["item"].filter(
+        (item) => item.name === product.name
+      );
+      if (result.length === 0) {
+        shoppingCart["item"].push(product);
+      }
+      console.log(shoppingCart["item"]);
+      return {
+        item: shoppingCart["item"],
+        quantity: shoppingCart["quantity"] + quantity,
+        total: shoppingCart["total"] + price,
+      };
+
+    case "REMOVE_PRODUCT":
+      return shoppingCart;
+    default:
+      return shoppingCart;
+  }
+};
+
 export default combineReducers({
   products: productReducer,
   selectedProduct: selectedProductReducer,
   showModalProductDetail: showModalProductDetailReducer,
+  shoppingCart: shoppingCartReducer,
 });

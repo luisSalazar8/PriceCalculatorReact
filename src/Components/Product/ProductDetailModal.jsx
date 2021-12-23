@@ -9,7 +9,7 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { closeModalProductDetail } from "../../Actions";
+import { closeModalProductDetail, addProductToCart } from "../../Actions";
 import { connect } from "react-redux";
 import { priceCalculator } from "../../Util/Price";
 
@@ -61,6 +61,10 @@ const ProductDetailModal = (props) => {
 
   const resetValues = () => {
     setQuantity(1);
+  };
+
+  const sendProduct = () => {
+    props.addProductToCart(props.selectedProduct, quantity, price);
   };
 
   useEffect(() => {
@@ -128,7 +132,9 @@ const ProductDetailModal = (props) => {
           <br />
           <Row>
             <Col>
-              <Button variant="base-green">Add to cart </Button>
+              <Button variant="base-green" onClick={sendProduct}>
+                Add to cart{" "}
+              </Button>
             </Col>
           </Row>
         </Container>
@@ -144,6 +150,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { closeModalProductDetail })(
-  ProductDetailModal
-);
+export default connect(mapStateToProps, {
+  closeModalProductDetail,
+  addProductToCart,
+})(ProductDetailModal);

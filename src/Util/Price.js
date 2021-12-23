@@ -10,5 +10,5 @@ export const priceCalculator = (selectedProduct, quantity) => {
   } else {
     total = selectedProduct.price * quantity;
   }
-  return total;
+  return total.toFixed(2);
 };
