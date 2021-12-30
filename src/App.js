@@ -5,17 +5,18 @@ import MarketLogo from "./Components/MarketLogo";
 import ProductList from "./Pages/ProductList";
 import ShoppingCart from "./Pages/ShoppingCart";
 
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import reducers from "./Reducers";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react';
+import settings from "./configureStore";
 
 function App() {
+  const {store,persistor} = settings();
   return (
     <React.Fragment>
       <MarketLogo />
-      <Provider store={createStore(reducers)}>
+      <Provider store={store} >
+        <PersistGate loading={null}  persistor={persistor} >
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -23,6 +24,7 @@ function App() {
             <Route path="/ShoppingCart" exact element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>
+        </PersistGate>
       </Provider>
     </React.Fragment>
   );
