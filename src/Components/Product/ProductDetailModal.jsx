@@ -12,6 +12,7 @@ import {
 import { closeModalProductDetail, addProductToCart } from "../../Actions";
 import { connect } from "react-redux";
 import { priceCalculator } from "../../Util/Price";
+import { useCallback } from "react";
 
 const ProductDetailModal = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -27,7 +28,7 @@ const ProductDetailModal = (props) => {
         <Row>
           <Col>
             <FormLabel>
-            <b>Price ({props.selectedProduct.sale.quantity} Units):</b>
+              <b>Price ({props.selectedProduct.sale.quantity} Units):</b>
             </FormLabel>
           </Col>
           <Col>
@@ -55,9 +56,9 @@ const ProductDetailModal = (props) => {
     setQuantity(event.target.value);
   };
 
-  const calculateTotal = () => {
+  const calculateTotal = useCallback(() => {
     setPrice(priceCalculator(props.selectedProduct, quantity));
-  };
+  }, [props.selectedProduct, quantity]);
 
   const resetValues = () => {
     setQuantity(1);
@@ -72,15 +73,11 @@ const ProductDetailModal = (props) => {
     if (props.selectedProduct) {
       calculateTotal();
     }
-  }, [quantity]);
+  }, [quantity, props.selectedProduct, calculateTotal]);
 
   useEffect(() => {
     if (props.showModalProductDetail) {
-      if (quantity !== 1) {
-        resetValues();
-      } else {
-        calculateTotal();
-      }
+      resetValues();
     }
   }, [props.showModalProductDetail]);
 
@@ -120,7 +117,9 @@ const ProductDetailModal = (props) => {
 
           <Row className="d-flex align-items-center">
             <Col>
-              <FormLabel><b>Quantity:</b></FormLabel>
+              <FormLabel>
+                <b>Quantity:</b>
+              </FormLabel>
             </Col>
             <Col>
               <Form.Select value={quantity} onChange={onChangeQuantity}>
@@ -131,7 +130,9 @@ const ProductDetailModal = (props) => {
           <br />
           <Row className="d-flex align-items-center">
             <Col>
-              <FormLabel><b>Total:</b></FormLabel>
+              <FormLabel>
+                <b>Total:</b>
+              </FormLabel>
             </Col>
             <Col>
               <FormLabel>US ${price}</FormLabel>
